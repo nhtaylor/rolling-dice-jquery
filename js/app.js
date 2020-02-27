@@ -1,38 +1,49 @@
-// grab element with id of #roll-dice and listen
-// for click event
-// when click event occurs "call" the rollDice function
-document.getElementById('roll-dice').onclick = rollDice
+$(() => {
 
-function rollDice () {
-  // randomly generate number from 1 to 6 and store
-  // values in variables (randomDie1 & randomDie2)
-  const randomDie1 = generateRandomDie()
-  const randomDie2 = generateRandomDie()
+  console.log("Hey this is a message")
 
-  // dynamically generate class names
-  // that correspond to the random numbers
-  const firstDieClass = `dice dice-${randomDie1}`
-  const secondDieClass = `dice dice-${randomDie2}`
+  // grab element with id of #roll-dice and listen
+  // for click event
+  // when click event occurs "call" the rollDice function
+  // document.getElementById('roll-dice').onclick = rollDice
+  // standard above, jquery below
+  $('#roll-dice').click(rollDice)
 
-  console.log(`randomDie1: ${randomDie1}`)
-  console.log(`randomDie2: ${randomDie2}`)
+  function rollDice () {
+    // randomly generate number from 1 to 6 and store
+    // values in variables (randomDie1 & randomDie2)
+    const randomDie1 = generateRandomDie()
+    const randomDie2 = generateRandomDie()
 
-  console.log(`firstDieClass: ${firstDieClass}`)
-  console.log(`secondDieClass: ${secondDieClass}`)
+    // dynamically generate class names
+    // that correspond to the random numbers
+    const firstDieClass = `dice dice-${randomDie1}`
+    const secondDieClass = `dice dice-${randomDie2}`
 
-  updatePage(firstDieClass, secondDieClass)
-}
+    console.log(`randomDie1: ${randomDie1}`)
+    console.log(`randomDie2: ${randomDie2}`)
 
-// specify function only responsible for
-// generating random numbers
-function generateRandomDie () {
-  return Math.floor(Math.random() * 6) + 1
-}
+    console.log(`firstDieClass: ${firstDieClass}`)
+    console.log(`secondDieClass: ${secondDieClass}`)
 
-// specify function only responsible for
-// updating our page
-function updatePage (firstClass, secondClass) {
-  // dynamically apply new class names to the dom (html page)
-  document.getElementById('first-die').className = firstClass
-  document.getElementById('second-die').className = secondClass
-}
+    updatePage(firstDieClass, secondDieClass)
+  }
+
+  // specify function only responsible for
+  // generating random numbers
+  function generateRandomDie () {
+    return Math.floor(Math.random() * 6) + 1
+  }
+
+  // specify function only responsible for
+  // updating our page
+  function updatePage (firstClass, secondClass) {
+    // dynamically apply new class names to the dom (html page)
+    // document.getElementById('first-die').className = firstClass
+    // document.getElementById('second-die').className = secondClass
+    // standard above, jquery below
+    $('#first-die').attr("class", firstClass)
+    $('#second-die').attr("class", secondClass)
+  }
+
+})
